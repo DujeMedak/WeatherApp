@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using WeatherApp.Models;
+using WeatherApp.Services;
 using Xamarin.Forms;
 
 namespace WeatherApp
@@ -10,6 +11,8 @@ namespace WeatherApp
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+
+        public IDataStore<OfferedItem> DataStore2 => DependencyService.Get<IDataStore<OfferedItem>>() ?? new OfferedCitiesMockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

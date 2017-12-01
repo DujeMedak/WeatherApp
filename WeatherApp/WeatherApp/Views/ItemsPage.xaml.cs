@@ -41,5 +41,12 @@ namespace WeatherApp
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        private void OnDeleteClicked(object sender, EventArgs e)
+        {
+            var choosenCity = (sender as MenuItem).CommandParameter as Item;
+            viewModel.Items.Remove(choosenCity);
+            
+        }
     }
 }

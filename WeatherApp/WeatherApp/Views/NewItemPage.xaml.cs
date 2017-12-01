@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using WeatherApp.Models;
 using Xamarin.Forms;
 
 namespace WeatherApp
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public OfferedItem OfferedCity { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            OfferedCity = new OfferedItem
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                Text = "City",
+                Description = "City district",
+                Choosen = false,
             };
 
             BindingContext = this;
@@ -24,7 +25,7 @@ namespace WeatherApp
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
+            MessagingCenter.Send(this, "AddItem", OfferedCity);
             await Navigation.PopToRootAsync();
         }
     }

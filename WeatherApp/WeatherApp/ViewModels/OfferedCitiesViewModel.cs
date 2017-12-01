@@ -19,11 +19,11 @@ namespace WeatherApp.ViewModels
             Items = new ObservableCollection<OfferedItem>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, OfferedItem>(this, "AddItem", async (obj, item) =>
             {
                 var _item = item as OfferedItem;
                 Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+                await DataStore2.AddItemAsync(_item);
             });
         }
 

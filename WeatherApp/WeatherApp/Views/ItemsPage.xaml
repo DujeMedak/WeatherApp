@@ -4,10 +4,7 @@
              x:Class="WeatherApp.ItemsPage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-	</ContentPage.ToolbarItems>
-	<ContentPage.Content>
+    <ContentPage.Content>
 		<StackLayout>
 			<ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Items}"

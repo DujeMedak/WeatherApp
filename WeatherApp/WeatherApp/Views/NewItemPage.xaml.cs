@@ -7,17 +7,17 @@ namespace WeatherApp
 {
     public partial class NewItemPage : ContentPage
     {
-        public OfferedItem OfferedCity { get; set; }
+        public OfferedCity OfferedCity { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            OfferedCity = new OfferedItem
+            OfferedCity = new OfferedCity
             {
-                Text = "City",
-                Description = "City district",
-                Choosen = false,
+                Name = "City",
+                District = "City district",
+                IsSelected = false,
             };
 
             BindingContext = this;

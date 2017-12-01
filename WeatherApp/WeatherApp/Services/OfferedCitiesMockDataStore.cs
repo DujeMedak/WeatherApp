@@ -7,17 +7,17 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    class OfferedCitiesMockDataStore : IDataStore<OfferedItem>
+    class OfferedCitiesMockDataStore : IDataStore<OfferedCity>
     {
-        List<OfferedItem> items;
+        List<OfferedCity> items;
 
         public OfferedCitiesMockDataStore()
         {
-            items = new List<OfferedItem>();
-            var mockItems = new List<OfferedItem>
+            items = new List<OfferedCity>();
+            var mockItems = new List<OfferedCity>
             {
-                new OfferedItem { Id = Guid.NewGuid().ToString(), Text = "City 1", Description="City 1 district", Choosen = false },
-                new OfferedItem{ Id = Guid.NewGuid().ToString(), Text = "City 2", Description="City 2 district" , Choosen = true}
+                new OfferedCity { Id = Guid.NewGuid().ToString(), Name = "City 1", District="City 1 district", IsSelected = false },
+                new OfferedCity{ Id = Guid.NewGuid().ToString(), Name = "City 2", District="City 2 district" , IsSelected = true}
                };
 
             foreach (var item in mockItems)
@@ -26,16 +26,16 @@ namespace WeatherApp.Services
             }
         }
 
-        public async Task<bool> AddItemAsync(OfferedItem item)
+        public async Task<bool> AddItemAsync(OfferedCity item)
         {
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(OfferedItem item)
+        public async Task<bool> UpdateItemAsync(OfferedCity item)
         {
-            var _item = items.Where((OfferedItem arg) => arg.Id == item.Id).FirstOrDefault();
+            var _item = items.Where((OfferedCity arg) => arg.Id == item.Id).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -44,18 +44,18 @@ namespace WeatherApp.Services
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var _item = items.Where((OfferedItem arg) => arg.Id == id).FirstOrDefault();
+            var _item = items.Where((OfferedCity arg) => arg.Id == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<OfferedItem> GetItemAsync(string id)
+        public async Task<OfferedCity> GetItemAsync(string id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<OfferedItem>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<OfferedCity>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }

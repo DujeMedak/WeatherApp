@@ -15,8 +15,8 @@ namespace WeatherApp
 
             var item = new Item
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                Name = "Item 1",
+                District = "This is an item description."
             };
 
             viewModel = new ItemDetailViewModel(item);

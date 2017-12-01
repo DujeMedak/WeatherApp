@@ -14,7 +14,7 @@ namespace WeatherApp
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "Choosen cities";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }

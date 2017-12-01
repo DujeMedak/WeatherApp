@@ -12,7 +12,7 @@ namespace WeatherApp
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
 
-        public IDataStore<OfferedItem> DataStore2 => DependencyService.Get<IDataStore<OfferedItem>>() ?? new OfferedCitiesMockDataStore();
+        public IDataStore<OfferedCity> DataStore2 => DependencyService.Get<IDataStore<OfferedCity>>() ?? new OfferedCitiesMockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

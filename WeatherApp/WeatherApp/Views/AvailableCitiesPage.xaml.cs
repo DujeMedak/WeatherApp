@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace WeatherApp
 {
-    public partial class AboutPage : ContentPage
+    public partial class AvailableCitiesPage : ContentPage
     {
         OfferedCitiesViewModel viewModel;
 
-        public AboutPage()
+        public AvailableCitiesPage()
         {
             InitializeComponent();
 
@@ -43,7 +43,7 @@ namespace WeatherApp
 
         private void OnDeleteClicked(object sender, EventArgs e)
         {
-            var choosenCity = (sender as MenuItem).CommandParameter as OfferedItem;
+            var choosenCity = (sender as MenuItem).CommandParameter as OfferedCity;
             viewModel.Items.Remove(choosenCity);
 
         }

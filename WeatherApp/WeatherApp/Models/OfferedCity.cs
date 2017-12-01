@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Models
 {
-    public class OfferedItem:Item
+    public class OfferedCity:Item
     {
-        public Boolean Choosen { get; set; }
+        public Boolean IsSelected { get; set; }
     }
 }

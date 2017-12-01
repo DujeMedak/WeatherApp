@@ -15,12 +15,12 @@ namespace WeatherApp
                 case Device.iOS:
                     itemsPage = new NavigationPage(new ItemsPage())
                     {
-                        Title = "Browse"
+                        Title = "Choosen cities"
                     };
 
-                    aboutPage = new NavigationPage(new AboutPage())
+                    aboutPage = new NavigationPage(new AvailableCitiesPage())
                     {
-                        Title = "About"
+                        Title = "Available cities"
                     };
                     itemsPage.Icon = "tab_feed.png";
                     aboutPage.Icon = "tab_about.png";
@@ -28,12 +28,12 @@ namespace WeatherApp
                 default:
                     itemsPage = new ItemsPage()
                     {
-                        Title = "Browse"
+                        Title = "Choosen cities"
                     };
 
-                    aboutPage = new AboutPage()
+                    aboutPage = new AvailableCitiesPage()
                     {
-                        Title = "About"
+                        Title = "Available cities"
                     };
                     break;
             }

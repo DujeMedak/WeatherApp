@@ -10,18 +10,18 @@ namespace WeatherApp.ViewModels
 {
     class OfferedCitiesViewModel : BaseViewModel
     {
-        public ObservableCollection<OfferedItem> Items { get; set; }
+        public ObservableCollection<OfferedCity> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public OfferedCitiesViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<OfferedItem>();
+            Title = "Available cities";
+            Items = new ObservableCollection<OfferedCity>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, OfferedItem>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, OfferedCity>(this, "AddItem", async (obj, item) =>
             {
-                var _item = item as OfferedItem;
+                var _item = item as OfferedCity;
                 Items.Add(_item);
                 await DataStore2.AddItemAsync(_item);
             });

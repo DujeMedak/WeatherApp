@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.AboutPage"
+             x:Class="WeatherApp.AvailableCitiesPage"
              xmlns:vm="clr-namespace:WeatherApp;"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
@@ -29,11 +29,11 @@
                                          Orientation="Horizontal">
                                 <StackLayout Padding="10"
                                             HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding Text}" 
+                                    <Label Text="{Binding Name}" 
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
-                                    <Label Text="{Binding Description}" 
+                                    <Label Text="{Binding District}" 
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
@@ -46,7 +46,7 @@
                                         HeightRequest="20">
                                         <BoxView 
                                             VerticalOptions="Center"
-                                            IsVisible="{Binding Choosen}"
+                                            IsVisible="{Binding IsSelected}"
                                             WidthRequest="20" HeightRequest="20"
                                             Color="Green" />
                                 </ContentView>

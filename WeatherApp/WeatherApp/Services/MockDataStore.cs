@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherApp.Models;
+using Xamarin.Forms;
 
 [assembly: Xamarin.Forms.Dependency(typeof(WeatherApp.MockDataStore))]
 namespace WeatherApp
@@ -14,20 +15,6 @@ namespace WeatherApp
         public MockDataStore()
         {
             items = new List<City>();
-            var mockItems = new List<City>
-            {
-                new City { Id = Guid.NewGuid().ToString(), Name = "First item", District="This is an item description." },
-                new City { Id = Guid.NewGuid().ToString(), Name = "Second item", District="This is an item description." },
-                new City { Id = Guid.NewGuid().ToString(), Name = "Third item", District="This is an item description." },
-                new City { Id = Guid.NewGuid().ToString(), Name = "Fourth item", District="This is an item description." },
-                new City { Id = Guid.NewGuid().ToString(), Name = "Fifth item", District="This is an item description." },
-                new City { Id = Guid.NewGuid().ToString(), Name = "Sixth item", District="This is an item description." },
-            };
-
-            foreach (var item in mockItems)
-            {
-                items.Add(item);
-            }
         }
 
         public async Task<bool> AddItemAsync(City item)
@@ -61,6 +48,33 @@ namespace WeatherApp
 
         public async Task<IEnumerable<City>> GetItemsAsync(bool forceRefresh = false)
         {
+            if (Application.Current.Properties.ContainsKey("cities"))
+            {
+                String cities = Application.Current.Properties["cities"] as String;
+                // do something with id
+                items.Clear();
+                System.Diagnostics.Debug.WriteLine("--------------" + cities);
+                String[] lines = cities.Split('\n');
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    String[] line = lines[i].Split('#');
+                    if (line.Length == 4)
+                    {
+                        if (line[3].Equals("true"))
+                        {
+                            items.Add(new City(line[0], line[1], line[2]));
+                        }
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            else {
+                System.Diagnostics.Debug.WriteLine("+++++++++++++++++++++++++++++++");
+            }
             return await Task.FromResult(items);
         }
 

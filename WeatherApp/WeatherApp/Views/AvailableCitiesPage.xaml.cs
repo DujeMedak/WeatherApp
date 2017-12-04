@@ -19,11 +19,11 @@ namespace WeatherApp
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as City;
+            var item = args.SelectedItem as SelectableItem<City>;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item.Data)));
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;
@@ -37,9 +37,9 @@ namespace WeatherApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
+            if (viewModel.Items.Count == 0) {
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
 
         private void OnDeleteClicked(object sender, EventArgs e)
@@ -52,7 +52,12 @@ namespace WeatherApp
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
             viewModel.updateData();
-            System.Diagnostics.Debug.WriteLine("fakamvglambaalč,gčlra,");
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.saveData();
         }
     }
 }

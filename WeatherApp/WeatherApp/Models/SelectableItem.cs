@@ -11,5 +11,12 @@ namespace WeatherApp.Models
     {
         public T Data { get; set; }
         public bool Selected { get; set; }
+
+        public SelectableItem(T data, bool selected) {
+            this.Data = data;
+            this.Selected = selected;
+        }
+
     }
+
 }

@@ -9,7 +9,6 @@ namespace WeatherApp
         public MainPage()
         {
             Page itemsPage, aboutPage = null;
-
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
@@ -49,5 +48,6 @@ namespace WeatherApp
             base.OnCurrentPageChanged();
             Title = CurrentPage?.Title ?? string.Empty;
         }
+
     }
 }

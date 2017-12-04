@@ -64,11 +64,29 @@ namespace WeatherApp.ViewModels
                 {
                     if (data.Selected)
                     {
-
-                        selectedCities.Add(new SelectableItem<City>() { Data = data.Data, Selected = data.Selected });
+                        selectedCities.Add(new SelectableItem<City>(data.Data,data.Selected));
                     }
                 }
                 DataStore.setItems(selectedCities);
+        }
+
+        public void saveData()
+        {
+            updateData();
+
+            String txtData = "";
+            foreach (SelectableItem<City> data in Items)
+            {
+                String txtSelected = "false";
+                if (data.Selected)
+                {
+                    txtSelected = "true";
+                }
+                
+                txtData += (data.Data.Id + '#' + data.Data.Name + '#' + data.Data.District + '#' + txtSelected + '\n');
+                System.Diagnostics.Debug.WriteLine(txtData);
+            }
+            Application.Current.Properties["cities"] = txtData;
         }
     }
 }

@@ -13,11 +13,7 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            var item = new City
-            {
-                Name = "Item 1",
-                District = "This is an item description."
-            };
+            var item = new City(Guid.NewGuid().ToString(),"Item 1", "This is an item description.");
 
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;

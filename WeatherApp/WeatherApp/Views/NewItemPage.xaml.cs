@@ -13,7 +13,7 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            OfferedCity = new SelectableItem<City> { Data = new City { Id = Guid.NewGuid().ToString(), Name = "City name", District = "City district" }, Selected = false };
+            OfferedCity = new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"City name","City district"),false );
 
 
             BindingContext = this;

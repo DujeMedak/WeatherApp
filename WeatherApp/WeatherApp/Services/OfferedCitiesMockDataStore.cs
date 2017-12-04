@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
+using Xamarin.Forms;
 
 namespace WeatherApp.Services
 {
@@ -17,9 +18,10 @@ namespace WeatherApp.Services
             
             var mockItems = new List<SelectableItem<City>>
             {
-                new SelectableItem<City> {Data =  new City { Id = Guid.NewGuid().ToString(), Name = "City 1", District = "This is an item description." },Selected = false  },
-                new SelectableItem<City> {Data =  new City { Id = Guid.NewGuid().ToString(), Name = "City 2", District = "This 2 is an item description." },Selected = false  },
-               };
+                new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"City 1","This is an item description."),false),
+                 new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"City 2","This is an item 2 description."),false),
+
+            };
 
             foreach (var item in mockItems)
             {
@@ -58,6 +60,32 @@ namespace WeatherApp.Services
 
         public async Task<IEnumerable<SelectableItem<City>>> GetItemsAsync(bool forceRefresh = false)
         {
+            if (Application.Current.Properties.ContainsKey("cities"))
+            {
+                String cities = Application.Current.Properties["cities"] as String;
+                // do something with id
+                items.Clear();
+                System.Diagnostics.Debug.WriteLine("--------------" + cities);
+                String[] lines = cities.Split('\n');
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    String[] line = lines[i].Split('#');
+                    bool sel = false;
+                    if (line.Length == 4)
+                    {
+                        if (line[3].Equals("true"))
+                        {
+                            sel = true;
+                        }
+                        items.Add(new SelectableItem<City>(new City(line[0], line[1], line[2]), sel));
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
             return await Task.FromResult(items);
         }
 

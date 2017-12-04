@@ -9,13 +9,13 @@ namespace WeatherApp
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<City> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Choosen cities";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<City>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 

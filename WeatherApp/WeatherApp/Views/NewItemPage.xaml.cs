@@ -7,18 +7,14 @@ namespace WeatherApp
 {
     public partial class NewItemPage : ContentPage
     {
-        public OfferedCity OfferedCity { get; set; }
+        public SelectableItem<City> OfferedCity { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            OfferedCity = new OfferedCity
-            {
-                Name = "City",
-                District = "City district",
-                IsSelected = false,
-            };
+            OfferedCity = new SelectableItem<City> { Data = new City { Id = Guid.NewGuid().ToString(), Name = "City name", District = "City district" }, Selected = false };
+
 
             BindingContext = this;
         }

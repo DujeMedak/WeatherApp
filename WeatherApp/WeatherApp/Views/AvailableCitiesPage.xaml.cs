@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WeatherApp.Models;
 using WeatherApp.ViewModels;
 using Xamarin.Forms;
@@ -18,7 +19,7 @@ namespace WeatherApp
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as City;
             if (item == null)
                 return;
 
@@ -43,9 +44,15 @@ namespace WeatherApp
 
         private void OnDeleteClicked(object sender, EventArgs e)
         {
-            var choosenCity = (sender as MenuItem).CommandParameter as OfferedCity;
+            var choosenCity = (sender as MenuItem).CommandParameter as SelectableItem<City>;
             viewModel.Items.Remove(choosenCity);
 
+        }
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            viewModel.updateData();
+            System.Diagnostics.Debug.WriteLine("fakamvglambaalč,gčlra,");
         }
     }
 }

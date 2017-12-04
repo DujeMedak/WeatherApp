@@ -4,8 +4,8 @@ namespace WeatherApp
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public City Item { get; set; }
+        public ItemDetailViewModel(City item = null)
         {
             Title = item?.Name;
             Item = item;

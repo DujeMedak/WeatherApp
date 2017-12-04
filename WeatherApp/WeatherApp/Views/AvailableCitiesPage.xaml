@@ -25,33 +25,26 @@
                                 <MenuItem Clicked="OnDeleteClicked"  CommandParameter="{Binding .}"
                                     Text="Delete" IsDestructive="True" />
                             </ViewCell.ContextActions>
-                            <StackLayout Padding="10"
-                                         Orientation="Horizontal">
-                                <StackLayout Padding="10"
-                                            HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding Name}" 
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding Data.Name}" 
+                                    Margin="10,10,5,5"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
-                                    <Label Text="{Binding District}" 
+                                    <Label Text="{Binding Data.District}" 
+                                    Margin="10,10,5,5"
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
                                 </StackLayout>
-                                <ContentView 
-                                        BackgroundColor="Gray"
-                                        Margin="10"
-                                        VerticalOptions="Center"
-                                        WidthRequest="20"
-                                        HeightRequest="20">
-                                        <BoxView 
-                                            VerticalOptions="Center"
-                                            IsVisible="{Binding IsSelected}"
-                                            WidthRequest="20" HeightRequest="20"
-                                            Color="Green" />
-                                </ContentView>
-                            </StackLayout>
-                            
+                                <Switch IsToggled="{Binding Selected}" Grid.Column="1" 
+                                        Toggled="Switch_Toggled"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

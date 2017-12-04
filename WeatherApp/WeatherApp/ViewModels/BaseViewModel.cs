@@ -10,9 +10,9 @@ namespace WeatherApp
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<City> DataStore => DependencyService.Get<IDataStore<City>>() ?? new MockDataStore();
 
-        public IDataStore<OfferedCity> DataStore2 => DependencyService.Get<IDataStore<OfferedCity>>() ?? new OfferedCitiesMockDataStore();
+        public IDataStore<SelectableItem<City>> DataStore2 => DependencyService.Get<IDataStore<SelectableItem<City>>>() ?? new OfferedCitiesMockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

@@ -13,7 +13,7 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new City
             {
                 Name = "Item 1",
                 District = "This is an item description."

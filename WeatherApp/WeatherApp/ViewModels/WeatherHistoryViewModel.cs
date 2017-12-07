@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
-using WeatherApp.Services;
 using WeatherApp.Models;
+using WeatherApp.Services;
 
 namespace WeatherApp.ViewModels
 {
-    public class WeatherViewModel : INotifyPropertyChanged
+    public class WeatherHistoryViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        
+
         private async Task InitializeGetWeatherAsync()
         {
             try
             {
                 IsBusy = true; // set the ui property "IsRunning" to true(loading) in Xaml ActivityIndicator Control
-               // WeatherMainModel = await _weatherServices.GetWeatherDetails(_city);
+
+                Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+                Int32 unixTimestamp2 = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 2))).TotalSeconds;
+                
+                //WeatherHistoryModel = await _weatherServices.GetCityHistoryWeather("Porto", "PT", unixTimestamp.ToString(), unixTimestamp.ToString());
             }
             finally
             {
@@ -35,16 +40,15 @@ namespace WeatherApp.ViewModels
 
         WeatherServices _weatherServices = new WeatherServices();
 
-        private WeatherMainModel _weatherMainModel;  // for xaml binding
+        private WeatherHistoryModel _weatherHistroyModel;  // for xaml binding
 
-        public WeatherMainModel WeatherMainModel
+        public WeatherHistoryModel WeatherHistoryModel
         {
-            get { return _weatherMainModel; }
+            get { return _weatherHistroyModel; }
             set
             {
-                _weatherMainModel = value;
-                IconImageString = "http://openweathermap.org/img/w/" + _weatherMainModel.weather[0].icon + ".png"; // fetch weather icon image
-                OnPropertyChanged();
+                _weatherHistroyModel = value;
+                 OnPropertyChanged();
             }
         }
 
@@ -58,17 +62,6 @@ namespace WeatherApp.ViewModels
                 Task.Run(async () => {
                     await InitializeGetWeatherAsync();
                 });
-                OnPropertyChanged();
-            }
-        }
-
-        private string _iconImageString; // for weather icon image string binding
-        public string IconImageString
-        {
-            get { return _iconImageString; }
-            set
-            {
-                _iconImageString = value;
                 OnPropertyChanged();
             }
         }
@@ -89,4 +82,3 @@ namespace WeatherApp.ViewModels
 
 
 }
-

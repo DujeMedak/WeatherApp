@@ -4,13 +4,8 @@
              xmlns:weatherVm="clr-namespace:WeatherApp.ViewModels"
              x:Class="WeatherApp.ItemDetailPage"
              Title="{Binding Title}">
-	<!--<StackLayout Spacing="20" Padding="15">
-		<Label Text="{Binding Item.Name}" FontSize="Medium"/>
-        <Label Text="{Binding Item.District}" FontSize="Small"/>
-    
-    </StackLayout>-->
     <ContentPage.BindingContext>
-        <weatherVm:WeatherViewModel/>
+        <weatherVm:CurrentWeatherViewModel/>
     </ContentPage.BindingContext>
 
     <StackLayout Padding="20,40,20,20">
@@ -22,7 +17,7 @@
                 <Label Text="City:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.name}"/>
+                <Label Text="{Binding WeatherMainModel.location.name}"/>
             </StackLayout>
         </StackLayout>
 
@@ -31,7 +26,7 @@
                 <Label Text="Country:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.sys.country}"/>
+                <Label Text="{Binding WeatherMainModel.location.country}"/>
             </StackLayout>
         </StackLayout>
 
@@ -40,7 +35,7 @@
                 <Label Text="Temperature:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.main.temp}"/>
+                <Label Text="{Binding WeatherMainModel.current.temp_c}"/>
             </StackLayout>
         </StackLayout>
 
@@ -49,7 +44,7 @@
                 <Label Text="Humidity:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.main.humidity}"/>
+                <Label Text="{Binding WeatherMainModel.current.humidity}"/>
             </StackLayout>
         </StackLayout>
 
@@ -58,7 +53,7 @@
                 <Label Text="Weather Main Status:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.weather[0].main}"/>
+                <Label Text="{Binding WeatherMainModel.current.condition.text}"/>
             </StackLayout>
         </StackLayout>
 
@@ -67,7 +62,7 @@
                 <Label Text="Weather Status:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.weather[0].description}"/>
+                <Label Text="{Binding WeatherMainModel.current.condition.text}"/>
             </StackLayout>
         </StackLayout>
 
@@ -87,8 +82,12 @@
                 <Label Text="Wind Speed:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.wind.speed}"/>
+                <Label Text="{Binding WeatherMainModel.current.wind_kph}"/>
             </StackLayout>
         </StackLayout>
+        <Button
+            Text="View History"
+            Clicked="History_Button_Clicked">
+        </Button>
     </StackLayout>
 </ContentPage>

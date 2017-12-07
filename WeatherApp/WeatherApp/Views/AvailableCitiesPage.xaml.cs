@@ -23,10 +23,11 @@ namespace WeatherApp
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new WeatherViewModel()));
-
             // Manually deselect item
             ItemsListView.SelectedItem = null;
+
+            //await Navigation.PushAsync(new ItemDetailPage(new CurrentWeatherViewModel()));
+
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

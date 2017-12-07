@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
-using WeatherApp.Services;
 using WeatherApp.Models;
+using WeatherApp.Services;
 
 namespace WeatherApp.ViewModels
 {
-    public class WeatherViewModel : INotifyPropertyChanged
+    public class CurrentWeatherViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        
+
         private async Task InitializeGetWeatherAsync()
         {
             try
             {
                 IsBusy = true; // set the ui property "IsRunning" to true(loading) in Xaml ActivityIndicator Control
-               // WeatherMainModel = await _weatherServices.GetWeatherDetails(_city);
+                WeatherMainModel = await _weatherServices.GetCurrentWeather(_city);
+
+                System.Diagnostics.Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!"+WeatherMainModel.ToString());
             }
             finally
             {
@@ -35,15 +37,17 @@ namespace WeatherApp.ViewModels
 
         WeatherServices _weatherServices = new WeatherServices();
 
-        private WeatherMainModel _weatherMainModel;  // for xaml binding
+        private CurrentWeatherModel _weatherMainModel;  // for xaml binding
 
-        public WeatherMainModel WeatherMainModel
+        public CurrentWeatherModel WeatherMainModel
         {
             get { return _weatherMainModel; }
             set
             {
                 _weatherMainModel = value;
-                IconImageString = "http://openweathermap.org/img/w/" + _weatherMainModel.weather[0].icon + ".png"; // fetch weather icon image
+                System.Diagnostics.Debug.WriteLine(value.current.condition.icon);
+
+                IconImageString = "http://"+_weatherMainModel.current.condition.icon.Substring(2);
                 OnPropertyChanged();
             }
         }
@@ -89,4 +93,3 @@ namespace WeatherApp.ViewModels
 
 
 }
-

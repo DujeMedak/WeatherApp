@@ -11,15 +11,16 @@ namespace WeatherApp.Services
     class OfferedCitiesMockDataStore : IDataStore<SelectableItem<City>>
     {
         List<SelectableItem<City>> items;
+        List<SelectableItem<City>> mockItems;
 
         public OfferedCitiesMockDataStore()
         {
             items = new List<SelectableItem<City>>();
             
-            var mockItems = new List<SelectableItem<City>>
+            mockItems = new List<SelectableItem<City>>
             {
-                new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"City 1","This is an item description."),false),
-                 new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"City 2","This is an item 2 description."),false),
+                new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"Porto","Porto"),false),
+                 new SelectableItem<City>(new City(Guid.NewGuid().ToString(),"Aveiro","Aveiro"),false),
 
             };
 
@@ -65,7 +66,6 @@ namespace WeatherApp.Services
                 String cities = Application.Current.Properties["cities"] as String;
                 // do something with id
                 items.Clear();
-                System.Diagnostics.Debug.WriteLine("--------------" + cities);
                 String[] lines = cities.Split('\n');
                 for (int i = 0; i < lines.Length; i++)
                 {
@@ -86,6 +86,7 @@ namespace WeatherApp.Services
                     }
                 }
             }
+
             return await Task.FromResult(items);
         }
 

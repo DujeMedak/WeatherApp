@@ -7,12 +7,12 @@ using Xamarin.Forms;
 
 namespace WeatherApp
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ChoosenCitiesViewModel : BaseViewModel
     {
         public ObservableCollection<City> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public ChoosenCitiesViewModel()
         {
             Title = "Choosen cities";
             Items = new ObservableCollection<City>();

@@ -42,36 +42,32 @@
     <Compile Include="Models\CurrentWeatherModel.cs" />
     <Compile Include="Models\HistoryWeatherModel.cs" />
     <Compile Include="Models\SelectableItem.cs" />
-    <Compile Include="Models\WeatherSubDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApixuWeatherMap.cs" />
     <Compile Include="Services\IDataStore.cs" />
     <Compile Include="Services\MockDataStore.cs" />
     <Compile Include="Services\OfferedCitiesMockDataStore.cs" />
-    <Compile Include="Services\OpenWeatherMap.cs" />
     <Compile Include="Services\WeatherServices.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CurrentWeatherViewModel.cs" />
-    <Compile Include="ViewModels\ItemDetailViewModel.cs" />
-    <Compile Include="ViewModels\ItemsViewModel.cs" />
+    <Compile Include="ViewModels\ChoosenCitiesViewModel.cs" />
     <Compile Include="ViewModels\OfferedCitiesViewModel.cs" />
     <Compile Include="ViewModels\WeatherHistoryViewModel.cs" />
-    <Compile Include="ViewModels\WeatherViewModel.cs" />
-    <Compile Include="Views\CityHistoryWeatherView.xaml.cs">
-      <DependentUpon>CityHistoryWeatherView.xaml</DependentUpon>
+    <Compile Include="Views\HistoryWeatherPage.xaml.cs">
+      <DependentUpon>HistoryWeatherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.cs" />
     <Compile Include="Views\AvailableCitiesPage.xaml.cs">
       <DependentUpon>AvailableCitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemDetailPage.xaml.cs">
-      <DependentUpon>ItemDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\CurrentWeatherPage.xaml.cs">
+      <DependentUpon>CurrentWeatherPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemsPage.xaml.cs">
-      <DependentUpon>ItemsPage.xaml</DependentUpon>
+    <Compile Include="Views\ChoosenCitiesPage.xaml.cs">
+      <DependentUpon>ChoosenCitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewItemPage.xaml.cs">
-      <DependentUpon>NewItemPage.xaml</DependentUpon>
+    <Compile Include="Views\AddNewCityPage.xaml.cs">
+      <DependentUpon>AddNewCityPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -83,15 +79,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ItemDetailPage.xaml">
+    <EmbeddedResource Include="Views\CurrentWeatherPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ItemsPage.xaml">
+    <EmbeddedResource Include="Views\ChoosenCitiesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\NewItemPage.xaml">
+    <EmbeddedResource Include="Views\AddNewCityPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -127,7 +123,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CityHistoryWeatherView.xaml">
+    <EmbeddedResource Include="Views\HistoryWeatherPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

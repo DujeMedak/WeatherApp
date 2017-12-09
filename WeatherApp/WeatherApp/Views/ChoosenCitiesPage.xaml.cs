@@ -6,14 +6,14 @@ using Xamarin.Forms;
 
 namespace WeatherApp
 {
-    public partial class ItemsPage : ContentPage
+    public partial class ChoosenCitiesPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        ChoosenCitiesViewModel viewModel;
 
-        public ItemsPage()
+        public ChoosenCitiesPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ChoosenCitiesViewModel();
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
             Int32 unixTimestamp2 = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 2))).TotalSeconds;
@@ -33,7 +33,7 @@ namespace WeatherApp
             var wvm = new CurrentWeatherViewModel();
             wvm.City = item.Name;
 
-            await Navigation.PushAsync(new ItemDetailPage(wvm));
+            await Navigation.PushAsync(new CurrentWeatherPage(wvm));
 
         }
 
@@ -47,8 +47,8 @@ namespace WeatherApp
 
         private void OnDeleteClicked(object sender, EventArgs e)
         {
-            var choosenCity = (sender as MenuItem).CommandParameter as City;
-            viewModel.Items.Remove(choosenCity);
+            //var choosenCity = (sender as MenuItem).CommandParameter as City;
+            //viewModel.Items.Remove(choosenCity);
             
         }
     }

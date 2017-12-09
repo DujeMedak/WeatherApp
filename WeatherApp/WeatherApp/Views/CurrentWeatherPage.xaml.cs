@@ -9,14 +9,14 @@ using Xamarin.Forms;
 
 namespace WeatherApp
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class CurrentWeatherPage : ContentPage
     {
         CurrentWeatherViewModel viewModel;
         bool clicked = false;
         DatePicker datePicker;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
-        public ItemDetailPage()
+        public CurrentWeatherPage()
         {
             InitializeComponent();
 
@@ -24,22 +24,17 @@ namespace WeatherApp
             BindingContext = viewModel;
         }
 
-        public ItemDetailPage(CurrentWeatherViewModel viewModel)
+        public CurrentWeatherPage(CurrentWeatherViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-
         private async void History_Button_Clicked(object sender, EventArgs e)
         {
             
-            if (!clicked)
+            if (!clicked && !IsBusy)
             {
                 datePicker = new DatePicker
                 {
@@ -48,8 +43,9 @@ namespace WeatherApp
 
                 };
                 datePicker.MaximumDate = DateTime.Now;
-
                 datePicker.MinimumDate = DateTime.Now.AddMonths(-1);
+
+                //datePicker.Format = "dd.MM.yyyy";
 
                 sl.Children.Add(datePicker);
                 button_show_history.Text = "SHOW";
@@ -59,8 +55,10 @@ namespace WeatherApp
             else {
                 WeatherHistoryViewModel whvm = new WeatherHistoryViewModel();
                 whvm.City = viewModel.City;
-                whvm.Date = datePicker.Date;
-                await Navigation.PushAsync(new CityHistoryWeatherView(whvm));
+
+                whvm.Date = new DateTime(datePicker.Date.Year,datePicker.Date.Month,datePicker.Date.Day);
+                System.Diagnostics.Debug.WriteLine(".................." + viewModel.City +" " + whvm.Date);
+                await Navigation.PushAsync(new HistoryWeatherPage(whvm));
             }
 
             

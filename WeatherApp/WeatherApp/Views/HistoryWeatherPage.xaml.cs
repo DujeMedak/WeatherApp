@@ -11,24 +11,21 @@ using Xamarin.Forms.Xaml;
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CityHistoryWeatherView : ContentPage
+    public partial class HistoryWeatherPage : ContentPage
     {
         WeatherServices ws;
         WeatherHistoryViewModel viewModel;
 
-        public CityHistoryWeatherView()
+        public HistoryWeatherPage()
         {
             InitializeComponent();
             ws = new WeatherServices();
-            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
-            Int32 unixTimestamp2 = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 2))).TotalSeconds;
-
-            //var s = ws.GetCityHistoryWeather("Porto","PT", unixTimestamp.ToString(), unixTimestamp.ToString());
-            //System.Diagnostics.Debug.WriteLine("???????????????"+s);
+            viewModel = new WeatherHistoryViewModel();
+            BindingContext = viewModel;
         }
 
-        public CityHistoryWeatherView(WeatherHistoryViewModel vm)
+        public HistoryWeatherPage(WeatherHistoryViewModel vm)
         {
             InitializeComponent();
             ws = new WeatherServices();

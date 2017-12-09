@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace WeatherApp
 {
-    public partial class NewItemPage : ContentPage
+    public partial class AddNewCityPage : ContentPage
     {
         public SelectableItem<City> OfferedCity { get; set; }
 
-        public NewItemPage()
+        public AddNewCityPage()
         {
             InitializeComponent();
 

@@ -12,7 +12,7 @@ namespace WeatherApp
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    itemsPage = new NavigationPage(new ItemsPage())
+                    itemsPage = new NavigationPage(new ChoosenCitiesPage())
                     {
                         Title = "Choosen cities"
                     };
@@ -25,7 +25,7 @@ namespace WeatherApp
                     aboutPage.Icon = "tab_about.png";
                     break;
                 default:
-                    itemsPage = new ItemsPage()
+                    itemsPage = new ChoosenCitiesPage()
                     {
                         Title = "Choosen cities"
                     };

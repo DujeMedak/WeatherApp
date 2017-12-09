@@ -23,7 +23,7 @@ namespace WeatherApp.ViewModels
             Items = new ObservableCollection<SelectableItem<City>>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, SelectableItem<City>>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<AddNewCityPage, SelectableItem<City>>(this, "AddItem", async (obj, item) =>
             {
                 var _item = item as SelectableItem<City>;
                 Items.Add(_item);

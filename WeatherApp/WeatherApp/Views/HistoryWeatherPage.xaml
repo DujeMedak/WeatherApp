@@ -1,100 +1,93 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:weatherVm="clr-namespace:WeatherApp.ViewModels"
-             x:Class="WeatherApp.ItemDetailPage"
+             x:Class="WeatherApp.Views.HistoryWeatherPage"
              Title="{Binding Title}">
-    <ContentPage.BindingContext>
-        <weatherVm:CurrentWeatherViewModel/>
-    </ContentPage.BindingContext>
+        <ContentPage.BindingContext>
+            <weatherVm:WeatherHistoryViewModel/>
+        </ContentPage.BindingContext>
 
     <StackLayout Padding="20,10,20,20">
         <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}"/>
         <StackLayout Orientation="Horizontal"
                      HorizontalOptions="Center">
             <StackLayout HorizontalOptions="Center">
-                <Label Text="{Binding WeatherMainModel.location.name}"
+                <Label Text="{Binding WeatherHistoryModel.location.name}"
                        FontSize="Large"
                        FontAttributes="Bold"
                        />
             </StackLayout>
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Country:"/>
             </StackLayout>
-            <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.location.country}"/>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="{Binding FormattedDate}"
+                       FontSize="Medium"/>
             </StackLayout>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
-            <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Temperature:"/>
+                <StackLayout HorizontalOptions="StartAndExpand">
+                    <Label Text="Max temp:"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.maxtemp_c}"/>
+                </StackLayout>
             </StackLayout>
-            <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.current.temp_c}"/>
-            </StackLayout>
-        </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Humidity:"/>
+                <Label Text="Min temp:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.current.humidity}"/>
-            </StackLayout>
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Weather Main Status:"/>
-            </StackLayout>
-            <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.current.condition.text}"/>
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.mintemp_c}"/>
             </StackLayout>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Weather Status:"/>
+                <Label Text="Avg temp:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.current.condition.text}"/>
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.avgtemp_c}"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+                <StackLayout HorizontalOptions="StartAndExpand">
+                    <Label Text="Avg humidity:"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.avghumidity}"/>
+                </StackLayout>
+            </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Max wind speed:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.maxwind_kph}"/>
             </StackLayout>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Weather Icon:"/>
+                <Label Text="Sunrise:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Image Source="{Binding IconImageString}"
-                   WidthRequest="30"
-                   HeightRequest="30"/>
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].astro.sunrise}"/>
             </StackLayout>
         </StackLayout>
-
+            
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="Wind Speed:"/>
+                <Label Text="Sunset:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.current.wind_kph}"/>
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].astro.sunset}"/>
             </StackLayout>
         </StackLayout>
-
-        <StackLayout>
-            <StackLayout x:Name="sl">
-
-            </StackLayout>
-            <Button x:Name="button_show_history"
-            Text="View History"
-            Clicked="History_Button_Clicked">
-            </Button>
-        </StackLayout>
-
     </StackLayout>
 </ContentPage>

@@ -19,12 +19,8 @@ namespace WeatherApp.ViewModels
             try
             {
                 IsBusy = true; // set the ui property "IsRunning" to true(loading) in Xaml ActivityIndicator Control
-
-                Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-
-                Int32 unixTimestamp2 = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 2))).TotalSeconds;
                 
-                //WeatherHistoryModel = await _weatherServices.GetCityHistoryWeather("Porto", "PT", unixTimestamp.ToString(), unixTimestamp.ToString());
+                WeatherHistoryModel = await _weatherServices.GetCityHistoryWeather(City,"PT",_date);
             }
             finally
             {
@@ -40,9 +36,14 @@ namespace WeatherApp.ViewModels
 
         WeatherServices _weatherServices = new WeatherServices();
 
-        private WeatherHistoryModel _weatherHistroyModel;  // for xaml binding
+        private HistoryWeatherModel _weatherHistroyModel;  // for xaml binding
 
-        public WeatherHistoryModel WeatherHistoryModel
+        public string Title
+        {
+            get { return "Weather history"; }
+        }
+
+        public HistoryWeatherModel WeatherHistoryModel
         {
             get { return _weatherHistroyModel; }
             set
@@ -63,6 +64,16 @@ namespace WeatherApp.ViewModels
                     await InitializeGetWeatherAsync();
                 });
                 OnPropertyChanged();
+            }
+        }
+
+        private DateTime _date;   // for entry binding and for method parameter value
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
             }
         }
 

@@ -17,10 +17,6 @@ namespace WeatherApp.Models
         public WeatherSysDetails sys { get; set; }
     }
 
-    public class WeatherHistoryModel {
-        //public List<WeatherSubDetails> weather { get; set; }
-        public string allData;
-    }
 
     public class WeatherSubDetails
     {

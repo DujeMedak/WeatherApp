@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:weatherVm="clr-namespace:WeatherApp.ViewModels"
              x:Class="WeatherApp.ItemDetailPage"
              Title="{Binding Title}">
@@ -8,16 +9,15 @@
         <weatherVm:CurrentWeatherViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout Padding="20,40,20,20">
-        <Entry Text="{Binding City, Mode=TwoWay}"
-           Placeholder="Search City"/>
+    <StackLayout Padding="20,10,20,20">
         <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}"/>
-        <StackLayout Orientation="Horizontal">
-            <StackLayout HorizontalOptions="StartAndExpand">
-                <Label Text="City:"/>
-            </StackLayout>
-            <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.location.name}"/>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="{Binding WeatherMainModel.location.name}"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       />
             </StackLayout>
         </StackLayout>
 
@@ -85,9 +85,16 @@
                 <Label Text="{Binding WeatherMainModel.current.wind_kph}"/>
             </StackLayout>
         </StackLayout>
-        <Button
+
+        <StackLayout>
+            <StackLayout x:Name="sl">
+
+            </StackLayout>
+            <Button x:Name="button_show_history"
             Text="View History"
             Clicked="History_Button_Clicked">
-        </Button>
+            </Button>
+        </StackLayout>
+
     </StackLayout>
 </ContentPage>

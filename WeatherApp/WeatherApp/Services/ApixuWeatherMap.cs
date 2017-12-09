@@ -11,6 +11,8 @@ namespace WeatherApp.Services
     class ApixuWeatherMap<T>
     {
         private const string OpenWeatherApi = "http://api.apixu.com/v1/current.json?key=";
+
+        private const string OpenWeatherHistoryApi = "http://api.apixu.com/v1/history.json?key=";
         private const string Key = "3fa9ae410f6f4d7786c222125170412";
         HttpClient _httpClient = new HttpClient();
 
@@ -21,10 +23,10 @@ namespace WeatherApp.Services
             return getWeatherModels;
         }
 
-        public async Task<T> GetCityHistoryDetails(string city, string countryCode, string start, string end)
+        public async Task<T> GetCityHistoryDetails(string city, string countryCode,DateTime date)
         {
-            //string var = "http://history.openweathermap.org/data/2.5/history/city?q={city ID},{country code}&type=hour&start={start}&end={end}";
-            var json = await _httpClient.GetStringAsync(OpenWeatherApi + city + "," + countryCode + "&type=hour&start=" + start + "&end=" + end + "&APPID=" + Key);
+            var json = await _httpClient.GetStringAsync(OpenWeatherHistoryApi + Key + "&q=" + city + "&dt=" + date.Year + "-" + date.Month + "-" + date.Day);
+            System.Diagnostics.Debug.WriteLine("ddddddddddddddddddddddddddddddddddd" + json);
             var getWeatherHistoryModels = JsonConvert.DeserializeObject<T>(json);
             return getWeatherHistoryModels;
         }

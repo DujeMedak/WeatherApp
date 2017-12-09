@@ -12,15 +12,14 @@ namespace WeatherApp
     public partial class ItemDetailPage : ContentPage
     {
         CurrentWeatherViewModel viewModel;
+        bool clicked = false;
+        DatePicker datePicker;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
         public ItemDetailPage()
         {
             InitializeComponent();
 
-            //var item = new City(Guid.NewGuid().ToString(),"Item 1", "This is an item description.");
-
-            //viewModel = new ItemDetailViewModel(item);
             viewModel = new CurrentWeatherViewModel();
             BindingContext = viewModel;
         }
@@ -39,8 +38,33 @@ namespace WeatherApp
 
         private async void History_Button_Clicked(object sender, EventArgs e)
         {
+            
+            if (!clicked)
+            {
+                datePicker = new DatePicker
+                {
+                    Format = "D",
+                    VerticalOptions = LayoutOptions.CenterAndExpand
 
-           // await Navigation.PushAsync(new CityHistoryWeatherView(new WeatherHistoryViewModel()));
+                };
+                datePicker.MaximumDate = DateTime.Now;
+
+                datePicker.MinimumDate = DateTime.Now.AddMonths(-1);
+
+                sl.Children.Add(datePicker);
+                button_show_history.Text = "SHOW";
+                clicked = true;
+
+            }
+            else {
+                WeatherHistoryViewModel whvm = new WeatherHistoryViewModel();
+                whvm.City = viewModel.City;
+                whvm.Date = datePicker.Date;
+                await Navigation.PushAsync(new CityHistoryWeatherView(whvm));
+            }
+
+            
+
         }
 
 

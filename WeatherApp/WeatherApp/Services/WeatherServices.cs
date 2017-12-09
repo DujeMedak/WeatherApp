@@ -10,9 +10,9 @@ namespace WeatherApp.Services
 {
     class WeatherServices
     {
-        //OpenWeatherMap<WeatherMainModel> _openWeatherRest = new OpenWeatherMap<WeatherMainModel>();
         ApixuWeatherMap<CurrentWeatherModel> _openWeatherRest = new ApixuWeatherMap<CurrentWeatherModel>();
-        //OpenWeatherMap<WeatherHistoryModel> _openWeatherRest2 = new OpenWeatherMap<WeatherHistoryModel>();
+        ApixuWeatherMap<HistoryWeatherModel> _openWeatherRest2 = new ApixuWeatherMap<HistoryWeatherModel>();
+
 
         public async Task<CurrentWeatherModel> GetCurrentWeather(string city)
         {
@@ -20,10 +20,10 @@ namespace WeatherApp.Services
             return getWeatherDetails;
         }
         
-        /*public async Task<WeatherHistoryModel> GetCityHistoryWeather(string city,string countryCode,string start,string end)
+        public async Task<HistoryWeatherModel> GetCityHistoryWeather(string city,string countryCode,DateTime date)
         {
-            var getWeatherDetails = await _openWeatherRest2.GetCityHistoryDetails(city,countryCode,start,end);
+            var getWeatherDetails = await _openWeatherRest2.GetCityHistoryDetails(city,countryCode,date);
             return getWeatherDetails;
-        }*/
+        }
     }
 }

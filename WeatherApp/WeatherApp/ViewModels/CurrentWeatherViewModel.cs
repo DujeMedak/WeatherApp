@@ -37,6 +37,12 @@ namespace WeatherApp.ViewModels
 
         WeatherServices _weatherServices = new WeatherServices();
 
+        
+        public string Title
+        {
+            get { return "Current Weather"; }
+        }
+
         private CurrentWeatherModel _weatherMainModel;  // for xaml binding
 
         public CurrentWeatherModel WeatherMainModel
@@ -78,6 +84,8 @@ namespace WeatherApp.ViewModels
         }
 
         private bool _isBusy;
+
+
         // for showing loader when the task is initializing
         public bool IsBusy
         {

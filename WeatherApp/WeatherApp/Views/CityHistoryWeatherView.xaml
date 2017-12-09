@@ -1,12 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:weatherVm="clr-namespace:WeatherApp.ViewModels"
              x:Class="WeatherApp.Views.CityHistoryWeatherView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding allData}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             Title="{Binding Title}">
+        <ContentPage.BindingContext>
+            <weatherVm:WeatherHistoryViewModel/>
+        </ContentPage.BindingContext>
+
+    <StackLayout Padding="20,10,20,20">
+        <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}"/>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="{Binding WeatherHistoryModel.location.name}"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       />
+            </StackLayout>
+            </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}"
+                       FontSize="Medium"/>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout Orientation="Horizontal">
+                <StackLayout HorizontalOptions="StartAndExpand">
+                    <Label Text="Max temp:"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.maxtemp_c}"/>
+                </StackLayout>
+            </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Min temp:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.mintemp_c}"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Avg temp:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.avgtemp_c}"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+                <StackLayout HorizontalOptions="StartAndExpand">
+                    <Label Text="Avg humidity:"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.avghumidity}"/>
+                </StackLayout>
+            </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Max wind speed:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.maxwind_kph}"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Sunrise:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].astro.sunrise}"/>
+            </StackLayout>
+        </StackLayout>
+            
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Sunset:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].astro.sunset}"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

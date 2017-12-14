@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
 using WeatherApp.Services;
+using Entry = Microcharts.Entry;
 
 namespace WeatherApp.ViewModels
 {
@@ -19,8 +20,13 @@ namespace WeatherApp.ViewModels
             try
             {
                 IsBusy = true; // set the ui property "IsRunning" to true(loading) in Xaml ActivityIndicator Control
-                System.Diagnostics.Debug.WriteLine("llllllllllllllllllllllllllllllllllllll" + City + " " + _date);
                 WeatherHistoryModel = await _weatherServices.GetCityHistoryWeather(City, "PT", _date);
+                ChartHist = new Microcharts.LineChart()
+                {
+                    LabelOrientation = Microcharts.Orientation.Horizontal,
+                    ValueLabelOrientation = Microcharts.Orientation.Horizontal,
+                    Entries= ParseChartData(_weatherHistroyModel)
+            };
             }
             finally
             {
@@ -97,7 +103,30 @@ namespace WeatherApp.ViewModels
             }
         }
 
-    }
+        //chart
+        private Microcharts.LineChart _chartHist;
+        public Microcharts.LineChart ChartHist
+        {
+            get { return _chartHist; }
+            set
+            {
+                _chartHist = value;
+                OnPropertyChanged();
+            }
+        }
+        private List<Entry> ParseChartData(HistoryWeatherModel historyWeatherModel) { 
+            List<Entry> entries = new List<Entry>();
+            for(int i=0; i<historyWeatherModel.forecast.forecastday[0].hour.Count; i += 3)
+            {
+                entries.Add(new Entry((float) historyWeatherModel.forecast.forecastday[0].hour[0].temp_c)
+                {
+                Label = historyWeatherModel.forecast.forecastday[0].hour[i].time.Split(' ')[1].Split(':')[0] + "h",
+                        ValueLabel = historyWeatherModel.forecast.forecastday[0].hour[i].temp_c + "º"
+                });
+            }
+            return entries;
+        }
 
+    }
 
 }

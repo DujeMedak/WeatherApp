@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:weatherVm="clr-namespace:WeatherApp.ViewModels"
+             xmlns:sk="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="WeatherApp.Views.HistoryWeatherPage"
              Title="{Binding Title}">
-        <ContentPage.BindingContext>
-            <weatherVm:WeatherHistoryViewModel/>
-        </ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <weatherVm:WeatherHistoryViewModel/>
+    </ContentPage.BindingContext>
 
     <StackLayout Padding="20,10,20,20">
         <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}"/>
@@ -18,7 +19,7 @@
                        FontAttributes="Bold"
                        />
             </StackLayout>
-            </StackLayout>
+        </StackLayout>
         <StackLayout Orientation="Horizontal"
                      HorizontalOptions="Center">
             <StackLayout HorizontalOptions="Center">
@@ -28,13 +29,24 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
-                <StackLayout HorizontalOptions="StartAndExpand">
-                    <Label Text="Max temp:"/>
-                </StackLayout>
-                <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.maxtemp_c}"/>
-                </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <sk:SKCanvasView x:Name="chartCanvas" PaintSurface="OnCanvasViewPaintSurface"/>
             </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Image Source="{Binding IconImageString}"
+                   WidthRequest="30"
+                   HeightRequest="30"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Max temp:"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.maxtemp_c}"/>
+            </StackLayout>
+        </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
@@ -55,13 +67,13 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
-                <StackLayout HorizontalOptions="StartAndExpand">
-                    <Label Text="Avg humidity:"/>
-                </StackLayout>
-                <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.avghumidity}"/>
-                </StackLayout>
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="Avg humidity:"/>
             </StackLayout>
+            <StackLayout HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].day.avghumidity}"/>
+            </StackLayout>
+        </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
@@ -80,7 +92,7 @@
                 <Label Text="{Binding WeatherHistoryModel.forecast.forecastday[0].astro.sunrise}"/>
             </StackLayout>
         </StackLayout>
-            
+
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Sunset:"/>

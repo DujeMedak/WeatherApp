@@ -28,7 +28,7 @@
             </StackLayout>
         </StackLayout>
 
-        <forms:ChartView x:Name="WeatherHistoryChart" HeightRequest="250" BackgroundColor="Transparent" Chart="{Binding ChartHist}"/>
+        <forms:ChartView HeightRequest="250" BackgroundColor="Transparent" Chart="{Binding ChartHist}"/>
        
 
         <StackLayout Orientation="Horizontal">

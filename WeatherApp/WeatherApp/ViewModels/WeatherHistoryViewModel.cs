@@ -25,8 +25,9 @@ namespace WeatherApp.ViewModels
                 {
                     LabelOrientation = Microcharts.Orientation.Horizontal,
                     ValueLabelOrientation = Microcharts.Orientation.Horizontal,
-                    Entries= ParseChartData(_weatherHistroyModel)
-            };
+                    Entries = ParseChartData(_weatherHistroyModel)
+                };
+
             }
             finally
             {
@@ -111,6 +112,7 @@ namespace WeatherApp.ViewModels
             set
             {
                 _chartHist = value;
+                Task.Delay(3000).Wait();
                 OnPropertyChanged();
             }
         }

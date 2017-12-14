@@ -23,6 +23,8 @@ namespace WeatherApp.ViewModels
                 WeatherHistoryModel = await _weatherServices.GetCityHistoryWeather(City, "PT", _date);
                 ChartHist = new Microcharts.LineChart()
                 {
+                    MaxValue = 40,
+                    MinValue = -10,
                     LabelOrientation = Microcharts.Orientation.Horizontal,
                     ValueLabelOrientation = Microcharts.Orientation.Horizontal,
                     Entries = ParseChartData(_weatherHistroyModel)
@@ -105,7 +107,11 @@ namespace WeatherApp.ViewModels
         }
 
         //chart
-        private Microcharts.LineChart _chartHist;
+        private Microcharts.LineChart _chartHist = new Microcharts.LineChart()
+        {
+            LabelOrientation = Microcharts.Orientation.Horizontal,
+            ValueLabelOrientation = Microcharts.Orientation.Horizontal
+        };
         public Microcharts.LineChart ChartHist
         {
             get { return _chartHist; }
@@ -120,10 +126,10 @@ namespace WeatherApp.ViewModels
             List<Entry> entries = new List<Entry>();
             for(int i=0; i<historyWeatherModel.forecast.forecastday[0].hour.Count; i += 3)
             {
-                entries.Add(new Entry((float) historyWeatherModel.forecast.forecastday[0].hour[0].temp_c)
+                entries.Add(new Entry((float)historyWeatherModel.forecast.forecastday[0].hour[i].temp_c)
                 {
-                Label = historyWeatherModel.forecast.forecastday[0].hour[i].time.Split(' ')[1].Split(':')[0] + "h",
-                        ValueLabel = historyWeatherModel.forecast.forecastday[0].hour[i].temp_c + "º"
+                    Label = historyWeatherModel.forecast.forecastday[0].hour[i].time.Split(' ')[1].Split(':')[0] + "h",
+                    ValueLabel = historyWeatherModel.forecast.forecastday[0].hour[i].temp_c + "º"
                 });
             }
             return entries;

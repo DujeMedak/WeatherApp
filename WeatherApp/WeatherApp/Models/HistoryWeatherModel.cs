@@ -51,6 +51,17 @@ namespace WeatherApp.Models
         public string moonset { get; set; }
     }
 
+    public class CopyOfAstro
+    {
+
+        [JsonProperty("sunrise")]
+        public string sunrise { get; set; }
+        [JsonProperty("sunset")]
+        public string sunset { get; set; }
+        public string moonrise { get; set; }
+        public string moonset { get; set; }
+    }
+
     public class Hour
     {
         public int time_epoch { get; set; }

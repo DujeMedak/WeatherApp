@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WeatherApp.App">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.City">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.MockDataStore" BaseTypeListCollapsed="true">
+    <Position X="7" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAgAABAAAABAAAAAAEAgAAAQAAA=</HashCode>
+      <FileName>Services\MockDataStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WeatherApp.BaseViewModel">
+    <Position X="2.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAEAAIEAAAQBAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WeatherApp.ChoosenCitiesViewModel">
+    <Position X="3.75" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAABAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ChoosenCitiesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.AddNewCityPage">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAI=</HashCode>
+      <FileName>Views\AddNewCityPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.AvailableCitiesPage">
+    <Position X="17.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAgIAAAAAAIQAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Views\AvailableCitiesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.ChoosenCitiesPage">
+    <Position X="7" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Views\ChoosenCitiesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.CurrentWeatherPage">
+    <Position X="7" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAQAAAAACAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Views\CurrentWeatherPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.MainPage">
+    <Position X="17.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.CurrentWeatherModel">
+    <Position X="17.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CurrentWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Location">
+    <Position X="12.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAAAAAAAAAAACQAAAAAEAAACAAAAAAAABIA=</HashCode>
+      <FileName>Models\CurrentWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Condition">
+    <Position X="12.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAIAQAAAAAAAAA=</HashCode>
+      <FileName>Models\CurrentWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Current">
+    <Position X="14.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAoAYABABAAEAIAABAAAAAAAAkgAAAAEIgCAAAAABA=</HashCode>
+      <FileName>Models\CurrentWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.HistoryWeatherModel">
+    <Position X="7" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HistoryWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Day">
+    <Position X="12.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAJQAAAAEAAAAAAAIAAAhAAAAAAAAAAAACAAAAgA=</HashCode>
+      <FileName>Models\HistoryWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Astro">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAIAAAAAAAEA=</HashCode>
+      <FileName>Models\HistoryWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Hour">
+    <Position X="14.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUApIYEhCBAAEAIQABEAAIEAAAkAAAAAEIASAAAAABA=</HashCode>
+      <FileName>Models\HistoryWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Forecastday">
+    <Position X="17.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAACAQAAAAA=</HashCode>
+      <FileName>Models\HistoryWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.Forecast">
+    <Position X="17.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HistoryWeatherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Models.SelectableItem&lt;T&gt;">
+    <Position X="12.25" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\SelectableItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Services.ApixuWeatherMap&lt;T&gt;">
+    <Position X="9.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAUAgBAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ApixuWeatherMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.Services.OfferedCitiesMockDataStore" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="17" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAgAABAAAABAEAAAAEAgAAAQAAA=</HashCode>
+      <FileName>Services\OfferedCitiesMockDataStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WeatherApp.Services.WeatherServices">
+    <Position X="17.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAgAAAAAAIAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Services\WeatherServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.ViewModels.CurrentWeatherViewModel" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAICAAAAAAAAEAIIACAAARggAAAAAAAIAAAAAACAAA=</HashCode>
+      <FileName>ViewModels\CurrentWeatherViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WeatherApp.ViewModels.OfferedCitiesViewModel">
+    <Position X="0.75" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAABAAAEAAFAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\OfferedCitiesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeatherApp.ViewModels.WeatherHistoryViewModel" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="17" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAACEAAABAAAEAIJAAAAARAgAAAAAABAAAAAAgCAAA=</HashCode>
+      <FileName>ViewModels\WeatherHistoryViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WeatherApp.Views.HistoryWeatherPage">
+    <Position X="9.25" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAUAAAAAAAAAAAQAQAAAAAAAAA=</HashCode>
+      <FileName>Views\HistoryWeatherPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="WeatherApp.IDataStore&lt;T&gt;">
+    <Position X="17.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAABAAAABAAAAAAEAgAAAQAAA=</HashCode>
+      <FileName>Services\IDataStore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -9,8 +9,8 @@
         <weatherVm:WeatherHistoryViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout Padding="20,10,20,20">
-        <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}"/>
+    <StackLayout Padding="20,10,20,10">
+        <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}" PropertyChanged="OnIsBusyChanged"/>
         <StackLayout Orientation="Horizontal"
                      HorizontalOptions="Center">
             <StackLayout HorizontalOptions="Center">
@@ -28,15 +28,8 @@
             </StackLayout>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal">
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <sk:SKCanvasView x:Name="chartCanvas" PaintSurface="OnCanvasViewPaintSurface"/>
-            </StackLayout>
-            <StackLayout HorizontalOptions="EndAndExpand">
-                <Image Source="{Binding IconImageString}"
-                   WidthRequest="30"
-                   HeightRequest="30"/>
-            </StackLayout>
+        <StackLayout Padding="0,20,0,20">
+            <sk:SKCanvasView x:Name="chartCanvas" PaintSurface="OnCanvasViewPaintSurface" HeightRequest="250"/>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">

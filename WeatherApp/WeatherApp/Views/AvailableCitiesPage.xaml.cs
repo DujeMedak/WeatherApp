@@ -61,4 +61,61 @@ namespace WeatherApp
             viewModel.saveData();
         }
     }
+
+    public partial class CopyOfAvailableCitiesPage : ContentPage
+    {
+        OfferedCitiesViewModel viewModel;
+
+        public CopyOfAvailableCitiesPage()
+        {
+            InitializeComponent();
+
+            BindingContext = viewModel = new OfferedCitiesViewModel();
+        }
+
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var item = args.SelectedItem as SelectableItem<City>;
+            if (item == null)
+                return;
+
+            // Manually deselect item
+            ItemsListView.SelectedItem = null;
+
+            //await Navigation.PushAsync(new ItemDetailPage(new CurrentWeatherViewModel()));
+
+        }
+
+        async void AddItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddNewCityPage());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (viewModel.Items.Count == 0)
+            {
+                viewModel.LoadItemsCommand.Execute(null);
+            }
+        }
+
+        private void OnDeleteClicked(object sender, EventArgs e)
+        {
+            var choosenCity = (sender as MenuItem).CommandParameter as SelectableItem<City>;
+            viewModel.Items.Remove(choosenCity);
+
+        }
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            viewModel.updateData();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.saveData();
+        }
+    }
 }
